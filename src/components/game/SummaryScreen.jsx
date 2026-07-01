@@ -100,7 +100,8 @@ export default function SummaryScreen({ show, score, correctCount, totalRounds, 
                 style={{ filter: `drop-shadow(0 0 8px ${rank.color}80)` }}
               />
             </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center percentage-text"
+            style={{ fontSize: '2rem', fontWeight: 'bold' }}>{percentage}%
             </div>
           </div>
         </motion.div>
@@ -118,12 +119,20 @@ export default function SummaryScreen({ show, score, correctCount, totalRounds, 
           <p className="text-lg text-[#D1D9F0] mt-1">ניקוד</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
+<div className="grid grid-cols-2 gap-4 mb-6">
+          {/* כרטיסיית תשובות נכונות */}
           <div className="glass-card rounded-2xl p-4">
+            <div className="text-2xl font-bold text-white" dir="ltr">
+              {correctCount}/{totalRounds}
+            </div>
             <div className="text-sm text-[#D1D9F0]">תשובות נכונות</div>
           </div>
+
+          {/* כרטיסיית דירוג */}
           <div className="glass-card rounded-2xl p-4">
-            <div className="text-2xl font-bold" style={{ color: rank.color }}>{rank.title}</div>
+            <div className="text-2xl font-bold" style={{ color: rank.color }}>
+              {rank.title}
+            </div>
             <div className="text-sm text-[#D1D9F0]">דירוג</div>
           </div>
         </div>

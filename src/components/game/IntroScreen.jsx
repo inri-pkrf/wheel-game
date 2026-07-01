@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
+import OverlayControls from '@/components/game/OverlayControls';
 
-export default function IntroScreen({ onStart }) {
+export default function IntroScreen({ onStart, onBack, onToggleFullscreen, isFullscreen }) {
   return (
     <motion.div
       className="fixed inset-0 z-[60] flex items-center justify-center p-6"
@@ -74,6 +75,14 @@ export default function IntroScreen({ onStart }) {
           <Play className="w-7 h-7" />
         </button>
       </motion.div>
+
+      <OverlayControls
+        onBack={onBack}
+        onToggleFullscreen={onToggleFullscreen}
+        isFullscreen={isFullscreen}
+        showBack={false}
+        showHome
+      />
     </motion.div>
   );
 }

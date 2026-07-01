@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Zap, Flame } from 'lucide-react';
+import OverlayControls from '@/components/game/OverlayControls';
 
 const DIFFICULTIES = [
   { id: 'easy', name: 'קל', description: '5 שאלות', icon: Star, color: '#22c55e' },
@@ -8,7 +9,7 @@ const DIFFICULTIES = [
   { id: 'hard', name: 'קשה', description: '11 שאלות', icon: Flame, color: '#ef4444' },
 ];
 
-export default function DifficultySelect({ onSelect }) {
+export default function DifficultySelect({ onSelect, onBack, onToggleFullscreen, isFullscreen }) {
   return (
     <motion.div
       className="fixed inset-0 z-40 flex items-center justify-center p-6"
@@ -50,6 +51,12 @@ export default function DifficultySelect({ onSelect }) {
           })}
         </div>
       </motion.div>
+
+      <OverlayControls
+        onBack={onBack}
+        onToggleFullscreen={onToggleFullscreen}
+        isFullscreen={isFullscreen}
+      />
     </motion.div>
   );
 }

@@ -154,6 +154,16 @@ export default function Game() {
     lastInteractionRef.current = Date.now();
   };
 
+  const handleIntroBack = () => {
+    setShowIntro(false);
+    lastInteractionRef.current = Date.now();
+  };
+
+  const handleDifficultyBack = () => {
+    setShowIntro(true);
+    lastInteractionRef.current = Date.now();
+  };
+
   const handleSelectDifficulty = (level) => {
     setDifficulty(level);
     setGameState('idle');
@@ -317,14 +327,24 @@ export default function Game() {
       {/* Intro screen */}
       <AnimatePresence>
         {showIntro && (
-          <IntroScreen onStart={handleIntroStart} />
+          <IntroScreen
+            onStart={handleIntroStart}
+            onBack={handleIntroBack}
+            onToggleFullscreen={toggleFullscreen}
+            isFullscreen={isFullscreen}
+          />
         )}
       </AnimatePresence>
 
       {/* Difficulty selection */}
       <AnimatePresence>
         {!showIntro && !difficulty && (
-          <DifficultySelect onSelect={handleSelectDifficulty} />
+          <DifficultySelect
+            onSelect={handleSelectDifficulty}
+            onBack={handleDifficultyBack}
+            onToggleFullscreen={toggleFullscreen}
+            isFullscreen={isFullscreen}
+          />
         )}
       </AnimatePresence>
 
