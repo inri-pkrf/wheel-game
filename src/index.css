@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 220 20% 96%;
+    --card: 222 40% 10%;
+    --card-foreground: 220 20% 96%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 220 20% 96%;
+    --primary: 22 100% 50%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 222 40% 15%;
+    --secondary-foreground: 220 20% 96%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 220 15% 65%;
+    --accent: 22 100% 55%;
+    --accent-foreground: 222 47% 5%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 22 100% 50%;
+    --radius: 0.75rem;
+    --font-heading: 'Rubik', 'Heebo', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Heebo', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Rubik', 'Heebo', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --orange-glow: #FF6B00;
+    --gold-accent: #FFD700;
+    --teal-accent: #00C9A7;
+    --purple-accent: #9B59B6;
+    --green-accent: #2ECC71;
+    --red-accent: #FF1744;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background: #0D1B3E;
+  }
+}
+
+@layer components {
+  /* Glassmorphism panels */
+  .glass-panel {
+    background: rgba(26, 26, 46, 0.65);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(240, 244, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(13, 27, 62, 0.5);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(240, 244, 255, 0.08);
+  }
+
+  /* Grid background */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(10, 36, 99, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 36, 99, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glow effects */
+  .glow-orange {
+    box-shadow: 0 0 30px rgba(255, 107, 0, 0.4), 0 0 60px rgba(255, 107, 0, 0.2);
+  }
+
+  .glow-orange-strong {
+    box-shadow: 0 0 40px rgba(255, 107, 0, 0.6), 0 0 80px rgba(255, 107, 0, 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 30px rgba(10, 36, 99, 0.5), 0 0 60px rgba(10, 36, 99, 0.3);
+  }
+
+  .text-glow-orange {
+    text-shadow: 0 0 20px rgba(255, 107, 0, 0.5), 0 0 40px rgba(255, 107, 0, 0.3);
+  }
+
+  .text-glow-white {
+    text-shadow: 0 0 15px rgba(240, 244, 255, 0.3);
+  }
+
+  /* Radial glow background */
+  .radial-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.08) 0%, transparent 50%);
+  }
+
+  /* Touch-optimized buttons */
+  .touch-btn {
+    @apply rounded-2xl font-bold transition-all duration-200 select-none;
+    min-height: 80px;
+  }
+
+  .touch-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* Answer option buttons */
+  .answer-btn {
+    @apply touch-btn flex items-center justify-center text-center p-6 text-2xl;
+    background: rgba(26, 26, 46, 0.6);
+    border: 2px solid rgba(240, 244, 255, 0.1);
+    color: #F0F4FF;
+    backdrop-filter: blur(12px);
+  }
+
+  .answer-btn.selected {
+    border-color: #FF6B00;
+    background: rgba(255, 107, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+  }
+
+  .answer-btn.correct {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  }
+
+  .answer-btn.wrong {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+  }
+
+  /* Primary CTA button */
+  .cta-btn {
+    @apply touch-btn flex items-center justify-center gap-3 text-3xl;
+    background: linear-gradient(135deg, #FF6B00 0%, #FF8C42 100%);
+    color: #0D1B3E;
+    box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-btn:hover {
+    box-shadow: 0 6px 30px rgba(255, 107, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Secondary button */
+  .secondary-btn {
+    @apply touch-btn flex items-center justify-center gap-3 text-2xl;
+    background: rgba(10, 36, 99, 0.6);
+    border: 2px solid rgba(240, 244, 255, 0.15);
+    color: #F0F4FF;
+    backdrop-filter: blur(12px);
+  }
+
+  .secondary-btn:hover {
+    border-color: rgba(255, 107, 0, 0.5);
+    background: rgba(10, 36, 99, 0.8);
+  }
+}
+
+@layer utilities {
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.3), 0 0 40px rgba(255, 107, 0, 0.15); }
+    50% { box-shadow: 0 0 30px rgba(255, 107, 0, 0.5), 0 0 60px rgba(255, 107, 0, 0.25); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes segment-pulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.3)); }
+    50% { filter: drop-shadow(0 0 14px rgba(255,255,255,0.7)); }
+  }
+  .segment-pulse {
+    animation: segment-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes segment-land {
+    0% { filter: brightness(2) drop-shadow(0 0 30px rgba(255,107,0,1)); }
+    100% { filter: brightness(1.3) drop-shadow(0 0 10px rgba(255,107,0,0.8)); }
+  }
+  .segment-land {
+    animation: segment-land 0.6s ease-out;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
