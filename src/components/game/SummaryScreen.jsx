@@ -5,7 +5,7 @@ import { RotateCcw } from 'lucide-react';
 import RoundAccordion from '@/components/game/RoundAccordion';
 
 function getRank(percentage) {
-  if (percentage === 100) return { icon: '🏅', title: 'אלוף פיקוד העורף', color: '#FF6B00' };
+  if (percentage === 100) return { icon: '🏆', title: 'אלוף פיקוד העורף', color: '#FF6B00' };
   if (percentage >= 80) return { icon: '🏅', title: 'מומחה פיקוד העורף', color: '#FF8C42' };
   if (percentage >= 60) return { icon: '🏅', title: 'מקצוען', color: '#D1D9F0' };
   if (percentage >= 40) return { icon: '🏅', title: 'מתקדם', color: '#D1D9F0' };
